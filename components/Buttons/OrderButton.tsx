@@ -1,15 +1,16 @@
 'use client';
 
-import { useOrdersStore } from "@/stores/OrdersStore";
+
 import { OrderButtonProps } from "@/types";
 import { colorStyles, sizeStyles } from "./buttonStyles";
+import useOrderItemsStore from "@/stores/test/OrderItemsStore";
 
 const OrderButton = ({ color, text, size, onCategoryChange, type, action }: OrderButtonProps) => {
 
-    const { clearOrder } = useOrdersStore();
+    const { clearOrderItems } = useOrderItemsStore();
 
     const actionsMap: Record<string, (() => void) | undefined> = {
-        clear: clearOrder
+        clear: clearOrderItems
     }
 
     const handleClick = () => {
@@ -30,7 +31,7 @@ const OrderButton = ({ color, text, size, onCategoryChange, type, action }: Orde
 
 
     return (
-        <button className={`${buttonSize} ${buttonColor} font-oswald  text-softer-grey shadow-button-shadow`}
+        <button className={`${buttonSize} ${buttonColor} font-oswald w-full h-full  text-softer-grey shadow-button-shadow`}
             onClick={handleClick}>{text}</button>
     );
 }

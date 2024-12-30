@@ -1,3 +1,45 @@
+// Type definitions for the entire application
+
+export type RestaurantTable = {
+  table_id: number;
+  table_number: number;
+  seats: number;
+  location: string;
+  is_active: boolean;
+};
+
+export type Order = {
+  order_id: number;
+  table_id?: number;
+  employee_id?: number;
+  order_date_time?: string;
+  status?: "Open" | "Closed" | "Cancelled";
+};
+
+export type OrderItem = {
+  order_item_id: number;
+  order_id: number | null;
+  menu_item_id: number;
+  quantity: number;
+  status: "NotFired" | "Fired" | "Completed";
+  unit_price: number;
+};
+
+export type Category = {
+  category_id: number;
+  name: string;
+  description: string;
+};
+
+export type MenuItem = {
+  menu_item_id: number;
+  name: string;
+  description: string;
+  price: number;
+  category_id: number;
+};
+
+// -------------------------------------------
 export type Table = {
   id: number;
   name: string;
@@ -26,7 +68,7 @@ export type OrderButtonProps = {
   disabled?: boolean;
   color: "muted-green" | "muted-red" | "muted-blue" | "feedback-warning-amber";
   size: "sm" | "md" | "lg";
-  onCategoryChange?: (category: string) => void;
+  onCategoryChange?: (categoryId: number, categoryName: string) => void;
   type: "action" | "category";
   action?: "clear" | "hold" | "send";
 };

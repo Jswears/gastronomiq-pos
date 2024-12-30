@@ -1,7 +1,7 @@
 import OrdersGrid from "@/components/Orders/OrdersGrid";
 
-const OrderPage = async ({ params }: { params: Promise<{ id: string }> }) => {
-    const id = (await params).id;
+const OrderPage = async ({ params }: { params: Promise<{ tableId: string }> }) => {
+    const id = parseInt((await params).tableId);
 
     return (
 
